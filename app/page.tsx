@@ -141,7 +141,7 @@ export default function Home() {
             )}
           </div>
           <div className="md:col-span-3">
-            <img src="/images/product-new.png" alt="Community showcase" className="aspect-[3/4] rounded-xl w-full object-cover" />
+            <img src="https://images.pexels.com/photos/5650026/pexels-photo-5650026.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Community showcase" className="aspect-[3/4] rounded-xl w-full object-cover" />
           </div>
         </div>
       </Section>
@@ -153,7 +153,9 @@ export default function Home() {
           {Array.from({ length: 8 }).map((_, i) => (
             <Card key={i} className="shrink-0 w-28">
               <CardContent className="p-4">
-                <img src="/images/logo-new.png" alt="Partner logo" className="h-10 w-full rounded-md object-contain" />
+                <div className="h-10 w-full rounded-md bg-gradient-to-r from-amber-100 to-orange-100 flex items-center justify-center">
+                  <span className="text-xs font-semibold text-amber-800">Partner {i + 1}</span>
+                </div>
               </CardContent>
             </Card>
           ))}
@@ -185,7 +187,12 @@ export default function Home() {
           {Array.from({ length: 4 }).map((_, i) => (
             <Card key={i} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <CardContent className="p-0 overflow-hidden">
-                <img src="/images/product-new.png" alt="Event" className="aspect-[4/3] rounded-t-xl w-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                <img src={[
+                  "https://images.pexels.com/photos/1762851/pexels-photo-1762851.jpeg?auto=compress&cs=tinysrgb&w=800",
+                  "https://images.pexels.com/photos/6348119/pexels-photo-6348119.jpeg?auto=compress&cs=tinysrgb&w=800",
+                  "https://images.pexels.com/photos/5650095/pexels-photo-5650095.jpeg?auto=compress&cs=tinysrgb&w=800",
+                  "https://images.pexels.com/photos/4464482/pexels-photo-4464482.jpeg?auto=compress&cs=tinysrgb&w=800"
+                ][i]} alt="Event" className="aspect-[4/3] rounded-t-xl w-full object-cover group-hover:scale-105 transition-transform duration-300" />
               </CardContent>
               <CardHeader>
                 <CardTitle className="text-sm group-hover:text-amber-700 transition-colors duration-200">Rajasthan Crafts Bazaar</CardTitle>
@@ -231,7 +238,12 @@ export default function Home() {
           {Array.from({ length: 4 }).map((_, i) => (
             <Card key={i} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <CardContent className="p-0 overflow-hidden">
-                <img src="/images/product-new.png" alt="Retail Outlet" className="aspect-[4/3] rounded-t-xl w-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                <img src={[
+                  "https://images.pexels.com/photos/5706712/pexels-photo-5706712.jpeg?auto=compress&cs=tinysrgb&w=800",
+                  "https://images.pexels.com/photos/6347888/pexels-photo-6347888.jpeg?auto=compress&cs=tinysrgb&w=800",
+                  "https://images.pexels.com/photos/3829227/pexels-photo-3829227.jpeg?auto=compress&cs=tinysrgb&w=800",
+                  "https://images.pexels.com/photos/4464482/pexels-photo-4464482.jpeg?auto=compress&cs=tinysrgb&w=800"
+                ][i]} alt="Retail Outlet" className="aspect-[4/3] rounded-t-xl w-full object-cover group-hover:scale-105 transition-transform duration-300" />
               </CardContent>
               <CardHeader>
                 <CardTitle className="text-sm group-hover:text-amber-700 transition-colors duration-200">FairKraft Creations</CardTitle>
@@ -257,7 +269,7 @@ export default function Home() {
             <footer className="mt-3 text-foreground">- Vankar Jagdish</footer>
           </blockquote>
           <div className="md:col-span-5">
-            <img src="/images/product-new.png" alt="Testimonial" className="aspect-[16/10] rounded-xl w-full object-cover" />
+            <img src="https://images.pexels.com/photos/5650003/pexels-photo-5650003.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Testimonial" className="aspect-[16/10] rounded-xl w-full object-cover" />
           </div>
         </div>
       </Section>
