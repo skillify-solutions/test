@@ -14,7 +14,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="mx-auto flex h-14 max-w-7xl items-center gap-4 px-4 sm:px-6">
-  <Link href="/" className="text-sm font-semibold tracking-tight text-[color:var(--brand)]">Artisan</Link>
+  <Link href="/" className="text-sm font-semibold tracking-wider uppercase text-primary">Artisan</Link>
         <nav className="hidden lg:block">
           <ul className="flex items-center gap-6 text-sm">
             {navItems.map((item) => {

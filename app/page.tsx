@@ -35,10 +35,10 @@ export default function Home() {
             ["18", "DISTRICTS"],
             ["1,300+", "CRAFTS MAPPED"],
             ["120+", "EVENTS LISTED"],
-          ].map(([num, label], index) => (
-            <div key={label as string} className="grid gap-1 p-4 rounded-lg bg-white/50 backdrop-blur-sm border border-white/20 hover:bg-white/70 transition-all duration-300 hover:scale-105">
-              <div className="text-3xl font-bold tracking-tight bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">{num}</div>
-              <div className="text-xs tracking-wide text-gray-600 font-medium">{label}</div>
+          ].map(([num, label]) => (
+            <div key={label as string} className="grid gap-1 p-4 rounded bg-white border border-border hover:shadow-md transition-all duration-300">
+              <div className="text-3xl font-bold tracking-tight text-primary">{num}</div>
+              <div className="text-xs tracking-wide text-muted-foreground font-medium uppercase">{label}</div>
             </div>
           ))}
         </div>
@@ -46,15 +46,15 @@ export default function Home() {
 
       {/* The community behind the platform */}
       <Section>
-        <h2 className="text-[22px] font-semibold tracking-tight bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">THE COMMUNITY BEHIND THE PLATFORM</h2>
+        <h2 className="text-[22px] font-semibold tracking-tight text-foreground uppercase">THE COMMUNITY BEHIND THE PLATFORM</h2>
         <div className="mt-6 grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
           <div className="md:col-span-3">
             <ul className="grid text-[20px] leading-7">
               <li className="border-b">
                 <button 
                   onClick={() => setActiveTab("maker")}
-                  className={`w-full flex items-center justify-between text-left py-4 font-medium transition-all duration-200 hover:bg-amber-50 rounded-lg px-2 ${
-                    activeTab === "maker" ? "text-amber-700 bg-amber-50" : "text-gray-600 hover:text-amber-600"
+                  className={`w-full flex items-center justify-between text-left py-4 font-medium transition-all duration-200 hover:bg-muted rounded px-2 ${
+                    activeTab === "maker" ? "text-primary bg-muted" : "text-muted-foreground hover:text-primary"
                   }`}
                 >
                   Maker
@@ -64,8 +64,8 @@ export default function Home() {
               <li className="border-b">
                 <button 
                   onClick={() => setActiveTab("market")}
-                  className={`w-full text-left py-4 transition-all duration-200 hover:bg-amber-50 rounded-lg px-2 ${
-                    activeTab === "market" ? "font-medium text-amber-700 bg-amber-50" : "text-gray-600 hover:text-amber-600"
+                  className={`w-full text-left py-4 transition-all duration-200 hover:bg-muted rounded px-2 ${
+                    activeTab === "market" ? "font-medium text-primary bg-muted" : "text-muted-foreground hover:text-primary"
                   }`}
                 >
                   Market Channel
@@ -75,8 +75,8 @@ export default function Home() {
               <li className="border-b">
                 <button 
                   onClick={() => setActiveTab("design")}
-                  className={`w-full text-left py-4 transition-all duration-200 hover:bg-amber-50 rounded-lg px-2 ${
-                    activeTab === "design" ? "font-medium text-amber-700 bg-amber-50" : "text-gray-600 hover:text-amber-600"
+                  className={`w-full text-left py-4 transition-all duration-200 hover:bg-muted rounded px-2 ${
+                    activeTab === "design" ? "font-medium text-primary bg-muted" : "text-muted-foreground hover:text-primary"
                   }`}
                 >
                   Design Consultant
@@ -141,20 +141,20 @@ export default function Home() {
             )}
           </div>
           <div className="md:col-span-3">
-            <img src="https://images.pexels.com/photos/5650026/pexels-photo-5650026.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Community showcase" className="aspect-[3/4] rounded-xl w-full object-cover" />
+            <img src="https://images.pexels.com/photos/5650026/pexels-photo-5650026.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Community showcase" className="aspect-[3/4] rounded w-full object-cover shadow-sm" />
           </div>
         </div>
       </Section>
 
       {/* Partners strip */}
       <Section>
-        <h2 className="text-sm font-semibold tracking-wider">OUR PARTNERS & COLLABORATORS</h2>
+        <h2 className="text-sm font-semibold tracking-wider uppercase text-foreground">OUR PARTNERS & COLLABORATORS</h2>
         <div className="mt-6 flex items-center gap-4 overflow-x-auto p-2">
           {Array.from({ length: 8 }).map((_, i) => (
             <Card key={i} className="shrink-0 w-28">
               <CardContent className="p-4">
-                <div className="h-10 w-full rounded-md bg-gradient-to-r from-amber-100 to-orange-100 flex items-center justify-center">
-                  <span className="text-xs font-semibold text-amber-800">Partner {i + 1}</span>
+                <div className="h-10 w-full rounded bg-muted flex items-center justify-center">
+                  <span className="text-xs font-semibold text-primary">Partner {i + 1}</span>
                 </div>
               </CardContent>
             </Card>
@@ -178,28 +178,28 @@ export default function Home() {
       {/* Events & Exhibitions */}
       <Section>
         <div className="flex items-center justify-between">
-          <h2 className="text-sm font-semibold tracking-wider">EVENTS & EXHIBITIONS</h2>
+          <h2 className="text-sm font-semibold tracking-wider uppercase text-foreground">EVENTS & EXHIBITIONS</h2>
           <Button asChild variant="outline" className="hidden sm:inline-flex">
             <Link href="/events-exhibitions">View All Events</Link>
           </Button>
         </div>
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           {Array.from({ length: 4 }).map((_, i) => (
-            <Card key={i} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <Card key={i} className="group hover:shadow-lg transition-all duration-300">
               <CardContent className="p-0 overflow-hidden">
                 <img src={[
                   "https://images.pexels.com/photos/1762851/pexels-photo-1762851.jpeg?auto=compress&cs=tinysrgb&w=800",
                   "https://images.pexels.com/photos/6348119/pexels-photo-6348119.jpeg?auto=compress&cs=tinysrgb&w=800",
                   "https://images.pexels.com/photos/5650095/pexels-photo-5650095.jpeg?auto=compress&cs=tinysrgb&w=800",
                   "https://images.pexels.com/photos/4464482/pexels-photo-4464482.jpeg?auto=compress&cs=tinysrgb&w=800"
-                ][i]} alt="Event" className="aspect-[4/3] rounded-t-xl w-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                ][i]} alt="Event" className="aspect-[4/3] rounded-t w-full object-cover" />
               </CardContent>
               <CardHeader>
-                <CardTitle className="text-sm group-hover:text-amber-700 transition-colors duration-200">Rajasthan Crafts Bazaar</CardTitle>
+                <CardTitle className="text-sm group-hover:text-primary transition-colors duration-200">Rajasthan Crafts Bazaar</CardTitle>
                 <CardDescription className="text-xs">Jaipur — Sep 5–8, 2025 • Apply by Aug 25</CardDescription>
               </CardHeader>
               <div className="px-6 pb-4">
-                <Badge variant="secondary" className="bg-amber-100 text-amber-700 hover:bg-amber-200 transition-colors duration-200">Exhibition</Badge>
+                <Badge variant="secondary" className="bg-secondary text-secondary-foreground">Exhibition</Badge>
               </div>
             </Card>
           ))}
@@ -212,7 +212,7 @@ export default function Home() {
 
       {/* How to use the platform — and safeguards */}
       <Section>
-        <h2 className="text-sm font-semibold tracking-wider">HOW TO USE THE PLATFORM — AND SAFEGUARDS</h2>
+        <h2 className="text-sm font-semibold tracking-wider uppercase text-foreground">HOW TO USE THE PLATFORM — AND SAFEGUARDS</h2>
         <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             ["How is authenticity verified?", "Verification combines field validation, community references and documentation where available. Badges: Verified Artisan, Community Verified."],
@@ -233,24 +233,24 @@ export default function Home() {
 
       {/* Retail outlets */}
       <Section>
-        <h2 className="text-sm font-semibold tracking-wider">RETAIL OUTLETS</h2>
+        <h2 className="text-sm font-semibold tracking-wider uppercase text-foreground">RETAIL OUTLETS</h2>
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           {Array.from({ length: 4 }).map((_, i) => (
-            <Card key={i} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <Card key={i} className="group hover:shadow-lg transition-all duration-300">
               <CardContent className="p-0 overflow-hidden">
                 <img src={[
                   "https://images.pexels.com/photos/5706712/pexels-photo-5706712.jpeg?auto=compress&cs=tinysrgb&w=800",
                   "https://images.pexels.com/photos/6347888/pexels-photo-6347888.jpeg?auto=compress&cs=tinysrgb&w=800",
                   "https://images.pexels.com/photos/3829227/pexels-photo-3829227.jpeg?auto=compress&cs=tinysrgb&w=800",
                   "https://images.pexels.com/photos/4464482/pexels-photo-4464482.jpeg?auto=compress&cs=tinysrgb&w=800"
-                ][i]} alt="Retail Outlet" className="aspect-[4/3] rounded-t-xl w-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                ][i]} alt="Retail Outlet" className="aspect-[4/3] rounded-t w-full object-cover" />
               </CardContent>
               <CardHeader>
-                <CardTitle className="text-sm group-hover:text-amber-700 transition-colors duration-200">FairKraft Creations</CardTitle>
+                <CardTitle className="text-sm group-hover:text-primary transition-colors duration-200">FairKraft Creations</CardTitle>
                 <CardDescription className="text-xs">Data is used to enable discovery, events and training. Personal contact info is shared only with consent.</CardDescription>
               </CardHeader>
               <div className="px-6 pb-4">
-                <Badge variant="secondary" className="bg-green-100 text-green-700 hover:bg-green-200 transition-colors duration-200">Retail</Badge>
+                <Badge variant="secondary" className="bg-secondary text-secondary-foreground">Retail</Badge>
               </div>
             </Card>
           ))}
@@ -262,14 +262,14 @@ export default function Home() {
 
       {/* Testimonials */}
       <Section>
-        <h2 className="text-sm font-semibold tracking-wider">TESTIMONIALS</h2>
+        <h2 className="text-sm font-semibold tracking-wider uppercase text-foreground">TESTIMONIALS</h2>
         <div className="mt-6 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           <blockquote className="md:col-span-7 text-sm text-muted-foreground">
             Creative Dignity hume aaj ke samay digital duniya se jodta hai aur is digital world me ek dusre se jodta hai. (CD connects us to today’s digital world and connects us to each other here.)
             <footer className="mt-3 text-foreground">- Vankar Jagdish</footer>
           </blockquote>
           <div className="md:col-span-5">
-            <img src="https://images.pexels.com/photos/5650003/pexels-photo-5650003.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Testimonial" className="aspect-[16/10] rounded-xl w-full object-cover" />
+            <img src="https://images.pexels.com/photos/5650003/pexels-photo-5650003.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Testimonial" className="aspect-[16/10] rounded w-full object-cover shadow-sm" />
           </div>
         </div>
       </Section>
