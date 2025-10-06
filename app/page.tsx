@@ -1,278 +1,300 @@
 "use client";
 
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import Hero from "@/components/hero";
-import Section from "@/components/section";
+import { Star, ShoppingCart, Heart, TrendingUp, Award, Users } from "lucide-react";
+
+const featuredProducts = [
+  {
+    id: 1,
+    name: "Handwoven Silk Scarf",
+    price: 2499,
+    originalPrice: 3499,
+    image: "https://images.pexels.com/photos/6347888/pexels-photo-6347888.jpeg?auto=compress&cs=tinysrgb&w=600",
+    category: "Textiles",
+    rating: 4.8,
+    badge: "Bestseller"
+  },
+  {
+    id: 2,
+    name: "Blue Pottery Bowl",
+    price: 1899,
+    image: "https://images.pexels.com/photos/5706712/pexels-photo-5706712.jpeg?auto=compress&cs=tinysrgb&w=600",
+    category: "Pottery",
+    rating: 4.9,
+    badge: null
+  },
+  {
+    id: 3,
+    name: "Brass Wall Hanging",
+    price: 3299,
+    originalPrice: 4299,
+    image: "https://images.pexels.com/photos/3829227/pexels-photo-3829227.jpeg?auto=compress&cs=tinysrgb&w=600",
+    category: "Metal Craft",
+    rating: 4.7,
+    badge: "New"
+  },
+  {
+    id: 4,
+    name: "Embroidered Cushion",
+    price: 899,
+    originalPrice: 1299,
+    image: "https://images.pexels.com/photos/5650026/pexels-photo-5650026.jpeg?auto=compress&cs=tinysrgb&w=600",
+    category: "Textiles",
+    rating: 4.6,
+    badge: "Sale"
+  }
+];
+
+const categories = [
+  {
+    name: "Textiles & Fabrics",
+    image: "https://images.pexels.com/photos/6347888/pexels-photo-6347888.jpeg?auto=compress&cs=tinysrgb&w=600",
+    count: "150+ Items"
+  },
+  {
+    name: "Pottery & Ceramics",
+    image: "https://images.pexels.com/photos/5706712/pexels-photo-5706712.jpeg?auto=compress&cs=tinysrgb&w=600",
+    count: "80+ Items"
+  },
+  {
+    name: "Metal Crafts",
+    image: "https://images.pexels.com/photos/3829227/pexels-photo-3829227.jpeg?auto=compress&cs=tinysrgb&w=600",
+    count: "120+ Items"
+  },
+  {
+    name: "Woodwork",
+    image: "https://images.pexels.com/photos/5650026/pexels-photo-5650026.jpeg?auto=compress&cs=tinysrgb&w=600",
+    count: "95+ Items"
+  }
+];
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState("maker");
   return (
     <>
-      {/* Hero */}
-      <Hero
-        kickerTitle="hosted by"
-        kickerSubtitle="Creative Dignity"
-        title="A living map of India's handmade ecosystem — connecting artisans, designers, buyers, service providers and all related stakeholders."
-        subtitle="Artisan amplifies visibility for India's handmade ecosystem, fixes data gaps, and creates short pathways to markets."
-      />
-
-      {/* Stats strip (with intro paragraph above like in mockup) */}
-      <Section className="pt-8">
-        <p className="mx-auto max-w-3xl text-center text-sm text-gray-600 leading-relaxed">
-          Artisan amplifies visibility for India&apos;s handmade ecosystem, fixes data gaps, and creates short pathways to
-          markets. The platform is designed to preserve craft knowledge, improve livelihoods and protect authenticity —
-          combining digital tools with our partners’ field teams who support outreach, training and market integration.
-        </p>
-        <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 text-center">
-          {[
-            ["1,250+", "ARTISAN PROFILES"],
-            ["750+", "BUYER PROFILES"],
-            ["18", "DISTRICTS"],
-            ["1,300+", "CRAFTS MAPPED"],
-            ["120+", "EVENTS LISTED"],
-          ].map(([num, label], index) => (
-            <div key={label as string} className="grid gap-1 p-4 rounded-lg bg-white/50 backdrop-blur-sm border border-white/20 hover:bg-white/70 transition-all duration-300 hover:scale-105">
-              <div className="text-3xl font-bold tracking-tight bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">{num}</div>
-              <div className="text-xs tracking-wide text-gray-600 font-medium">{label}</div>
+      <div className="relative overflow-hidden bg-gradient-to-br from-amber-600 via-orange-600 to-amber-700 text-white">
+        <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/5650095/pexels-photo-5650095.jpeg?auto=compress&cs=tinysrgb&w=1920')] bg-cover bg-center opacity-20"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 md:py-32">
+          <div className="max-w-3xl">
+            <Badge className="mb-6 bg-white text-amber-600 hover:bg-white">Authentic Handcrafted Products</Badge>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+              Discover the Beauty of Indian Handicrafts
+            </h1>
+            <p className="text-xl text-amber-100 mb-8 leading-relaxed">
+              Shop directly from artisans across India. Every purchase preserves traditional crafts and supports sustainable livelihoods.
+            </p>
+            <div className="flex gap-4 flex-wrap">
+              <Button asChild size="lg" className="bg-white text-amber-600 hover:bg-amber-50 h-12 px-8">
+                <Link href="/shop">Shop Now</Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10 h-12 px-8">
+                <Link href="/about">Our Story</Link>
+              </Button>
             </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* The community behind the platform */}
-      <Section>
-        <h2 className="text-[22px] font-semibold tracking-tight bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">THE COMMUNITY BEHIND THE PLATFORM</h2>
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
-          <div className="md:col-span-3">
-            <ul className="grid text-[20px] leading-7">
-              <li className="border-b">
-                <button 
-                  onClick={() => setActiveTab("maker")}
-                  className={`w-full flex items-center justify-between text-left py-4 font-medium transition-all duration-200 hover:bg-amber-50 rounded-lg px-2 ${
-                    activeTab === "maker" ? "text-amber-700 bg-amber-50" : "text-gray-600 hover:text-amber-600"
-                  }`}
-                >
-                  Maker
-                  {activeTab === "maker" && <span className="text-sm">→</span>}
-                </button>
-              </li>
-              <li className="border-b">
-                <button 
-                  onClick={() => setActiveTab("market")}
-                  className={`w-full text-left py-4 transition-all duration-200 hover:bg-amber-50 rounded-lg px-2 ${
-                    activeTab === "market" ? "font-medium text-amber-700 bg-amber-50" : "text-gray-600 hover:text-amber-600"
-                  }`}
-                >
-                  Market Channel
-                  {activeTab === "market" && <span className="text-sm ml-2">→</span>}
-                </button>
-              </li>
-              <li className="border-b">
-                <button 
-                  onClick={() => setActiveTab("design")}
-                  className={`w-full text-left py-4 transition-all duration-200 hover:bg-amber-50 rounded-lg px-2 ${
-                    activeTab === "design" ? "font-medium text-amber-700 bg-amber-50" : "text-gray-600 hover:text-amber-600"
-                  }`}
-                >
-                  Design Consultant
-                  {activeTab === "design" && <span className="text-sm ml-2">→</span>}
-                </button>
-              </li>
-            </ul>
-          </div>
-          <div className="md:col-span-6">
-            {activeTab === "maker" && (
-              <>
-                <p className="text-[15px] leading-7 text-muted-foreground max-w-[46ch]">
-                  A searchable, authenticated database of artisans, maker groups and handmade enterprises across India. Find profiles
-                  by craft, location, techniques, materials and certifications. Each profile lists capability, product samples,
-                  contact options and verification status so buyers and designers can connect with confidence.
-                </p>
-                <div className="mt-8 flex gap-4">
-                  <Button asChild className="h-10 rounded-full px-6">
-                    <Link href="/maker-database">Explore Database</Link>
-                  </Button>
-                  <Button asChild variant="outline" className="h-10 rounded-full px-6">
-                    <Link href="/contact-us">Sign up as an artisan</Link>
-                  </Button>
-                </div>
-              </>
-            )}
-            
-            {activeTab === "market" && (
-              <>
-                <p className="text-[15px] leading-7 text-muted-foreground max-w-[46ch]">
-                  Connect with retail outlets, e-commerce platforms, and distribution channels that specialize in handmade products. 
-                  Find verified market channels that understand the value of authentic craftsmanship and provide fair opportunities 
-                  for artisans to reach broader audiences.
-                </p>
-                <div className="mt-8 flex gap-4">
-                  <Button asChild className="h-10 rounded-full px-6">
-                    <Link href="/retail-outlets">Explore Market Channels</Link>
-                  </Button>
-                  <Button asChild variant="outline" className="h-10 rounded-full px-6">
-                    <Link href="/contact-us">List your channel</Link>
-                  </Button>
-                </div>
-              </>
-            )}
-            
-            {activeTab === "design" && (
-              <>
-                <p className="text-[15px] leading-7 text-muted-foreground max-w-[46ch]">
-                  Access design consultants and creative professionals who specialize in traditional crafts and contemporary design. 
-                  Connect with experts who can help bridge traditional techniques with modern aesthetics, providing guidance on 
-                  product development, market positioning, and design innovation.
-                </p>
-                <div className="mt-8 flex gap-4">
-                  <Button asChild className="h-10 rounded-full px-6">
-                    <Link href="/service-providers">Find Design Consultants</Link>
-                  </Button>
-                  <Button asChild variant="outline" className="h-10 rounded-full px-6">
-                    <Link href="/contact-us">Offer your services</Link>
-                  </Button>
-                </div>
-              </>
-            )}
-          </div>
-          <div className="md:col-span-3">
-            <img src="https://images.pexels.com/photos/5650026/pexels-photo-5650026.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Community showcase" className="aspect-[3/4] rounded-xl w-full object-cover" />
           </div>
         </div>
-      </Section>
+      </div>
 
-      {/* Partners strip */}
-      <Section>
-        <h2 className="text-sm font-semibold tracking-wider">OUR PARTNERS & COLLABORATORS</h2>
-        <div className="mt-6 flex items-center gap-4 overflow-x-auto p-2">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <Card key={i} className="shrink-0 w-28">
-              <CardContent className="p-4">
-                <div className="h-10 w-full rounded-md bg-gradient-to-r from-amber-100 to-orange-100 flex items-center justify-center">
-                  <span className="text-xs font-semibold text-amber-800">Partner {i + 1}</span>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-        <div className="mt-4">
-          <Select>
-            <SelectTrigger className="h-10 w-56">
-              <SelectValue placeholder="See All Partners" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">See All Partners</SelectItem>
-              <SelectItem value="government">Government</SelectItem>
-              <SelectItem value="ngos">NGOs</SelectItem>
-              <SelectItem value="retail">Retail</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-      </Section>
-
-      {/* Events & Exhibitions */}
-      <Section>
-        <div className="flex items-center justify-between">
-          <h2 className="text-sm font-semibold tracking-wider">EVENTS & EXHIBITIONS</h2>
-          <Button asChild variant="outline" className="hidden sm:inline-flex">
-            <Link href="/events-exhibitions">View All Events</Link>
-          </Button>
-        </div>
-        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-          {Array.from({ length: 4 }).map((_, i) => (
-            <Card key={i} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <CardContent className="p-0 overflow-hidden">
-                <img src={[
-                  "https://images.pexels.com/photos/1762851/pexels-photo-1762851.jpeg?auto=compress&cs=tinysrgb&w=800",
-                  "https://images.pexels.com/photos/6348119/pexels-photo-6348119.jpeg?auto=compress&cs=tinysrgb&w=800",
-                  "https://images.pexels.com/photos/5650095/pexels-photo-5650095.jpeg?auto=compress&cs=tinysrgb&w=800",
-                  "https://images.pexels.com/photos/4464482/pexels-photo-4464482.jpeg?auto=compress&cs=tinysrgb&w=800"
-                ][i]} alt="Event" className="aspect-[4/3] rounded-t-xl w-full object-cover group-hover:scale-105 transition-transform duration-300" />
-              </CardContent>
-              <CardHeader>
-                <CardTitle className="text-sm group-hover:text-amber-700 transition-colors duration-200">Rajasthan Crafts Bazaar</CardTitle>
-                <CardDescription className="text-xs">Jaipur — Sep 5–8, 2025 • Apply by Aug 25</CardDescription>
-              </CardHeader>
-              <div className="px-6 pb-4">
-                <Badge variant="secondary" className="bg-amber-100 text-amber-700 hover:bg-amber-200 transition-colors duration-200">Exhibition</Badge>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+          <Card className="text-center border-amber-200 hover:shadow-xl transition-all duration-300">
+            <CardContent className="p-8">
+              <div className="bg-amber-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <Award className="w-8 h-8 text-amber-600" />
               </div>
-            </Card>
-          ))}
+              <h3 className="text-lg font-bold mb-2">100% Authentic</h3>
+              <p className="text-gray-600">Verified handcrafted products from skilled artisans</p>
+            </CardContent>
+          </Card>
+          <Card className="text-center border-amber-200 hover:shadow-xl transition-all duration-300">
+            <CardContent className="p-8">
+              <div className="bg-amber-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <Users className="w-8 h-8 text-amber-600" />
+              </div>
+              <h3 className="text-lg font-bold mb-2">Fair Trade</h3>
+              <p className="text-gray-600">Direct support to artisan communities nationwide</p>
+            </CardContent>
+          </Card>
+          <Card className="text-center border-amber-200 hover:shadow-xl transition-all duration-300">
+            <CardContent className="p-8">
+              <div className="bg-amber-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <TrendingUp className="w-8 h-8 text-amber-600" />
+              </div>
+              <h3 className="text-lg font-bold mb-2">Quality Guaranteed</h3>
+              <p className="text-gray-600">Premium craftsmanship with easy returns</p>
+            </CardContent>
+          </Card>
         </div>
-        <div className="mt-6 flex gap-3">
-          <Button asChild variant="default"><Link href="/events-exhibitions">View All Events</Link></Button>
-          <Button asChild variant="outline"><Link href="/contact-us">Submit an Event</Link></Button>
-        </div>
-      </Section>
 
-      {/* How to use the platform — and safeguards */}
-      <Section>
-        <h2 className="text-sm font-semibold tracking-wider">HOW TO USE THE PLATFORM — AND SAFEGUARDS</h2>
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            ["How is authenticity verified?", "Verification combines field validation, community references and documentation where available. Badges: Verified Artisan, Community Verified."],
-            ["Who can create a profile?", "Profiles can be created by artisans or registered groups. Creative Dignity provides assisted onboarding and field verifiers where authorised."],
-            ["How is data used?", "Data is used to enable discovery, outreach and training. Personal contact info is shared only with consent."],
-          ].map(([title, desc]) => (
-            <div key={title as string} className="grid gap-2">
-              <h3 className="text-sm font-medium">{title}</h3>
-              <p className="text-sm text-muted-foreground">{desc}</p>
+        <div className="mb-20">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h2 className="text-3xl font-bold mb-2">Shop by Category</h2>
+              <p className="text-gray-600">Explore our curated collection of handcrafted treasures</p>
             </div>
-          ))}
-        </div>
-        <div className="mt-6 flex gap-3">
-          <Button asChild variant="default"><Link href="/resources">Read Full Guidelines</Link></Button>
-          <Button asChild variant="outline"><Link href="/contact-us">Report An Issue</Link></Button>
-        </div>
-      </Section>
-
-      {/* Retail outlets */}
-      <Section>
-        <h2 className="text-sm font-semibold tracking-wider">RETAIL OUTLETS</h2>
-        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-          {Array.from({ length: 4 }).map((_, i) => (
-            <Card key={i} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <CardContent className="p-0 overflow-hidden">
-                <img src={[
-                  "https://images.pexels.com/photos/5706712/pexels-photo-5706712.jpeg?auto=compress&cs=tinysrgb&w=800",
-                  "https://images.pexels.com/photos/6347888/pexels-photo-6347888.jpeg?auto=compress&cs=tinysrgb&w=800",
-                  "https://images.pexels.com/photos/3829227/pexels-photo-3829227.jpeg?auto=compress&cs=tinysrgb&w=800",
-                  "https://images.pexels.com/photos/4464482/pexels-photo-4464482.jpeg?auto=compress&cs=tinysrgb&w=800"
-                ][i]} alt="Retail Outlet" className="aspect-[4/3] rounded-t-xl w-full object-cover group-hover:scale-105 transition-transform duration-300" />
-              </CardContent>
-              <CardHeader>
-                <CardTitle className="text-sm group-hover:text-amber-700 transition-colors duration-200">FairKraft Creations</CardTitle>
-                <CardDescription className="text-xs">Data is used to enable discovery, events and training. Personal contact info is shared only with consent.</CardDescription>
-              </CardHeader>
-              <div className="px-6 pb-4">
-                <Badge variant="secondary" className="bg-green-100 text-green-700 hover:bg-green-200 transition-colors duration-200">Retail</Badge>
-              </div>
-            </Card>
-          ))}
-        </div>
-        <div className="mt-6">
-          <Button asChild variant="default"><Link href="/retail-outlets">View All Retail Outlets</Link></Button>
-        </div>
-      </Section>
-
-      {/* Testimonials */}
-      <Section>
-        <h2 className="text-sm font-semibold tracking-wider">TESTIMONIALS</h2>
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-          <blockquote className="md:col-span-7 text-sm text-muted-foreground">
-            Creative Dignity hume aaj ke samay digital duniya se jodta hai aur is digital world me ek dusre se jodta hai. (CD connects us to today’s digital world and connects us to each other here.)
-            <footer className="mt-3 text-foreground">- Vankar Jagdish</footer>
-          </blockquote>
-          <div className="md:col-span-5">
-            <img src="https://images.pexels.com/photos/5650003/pexels-photo-5650003.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Testimonial" className="aspect-[16/10] rounded-xl w-full object-cover" />
+            <Button asChild variant="outline" className="border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white">
+              <Link href="/shop">View All</Link>
+            </Button>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {categories.map((category, index) => (
+              <Link href="/shop" key={index} className="group">
+                <Card className="overflow-hidden hover:shadow-xl transition-all duration-300">
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={category.image}
+                      alt={category.name}
+                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div className="absolute bottom-4 left-4 right-4 text-white">
+                      <h3 className="font-bold mb-1">{category.name}</h3>
+                      <p className="text-sm text-amber-200">{category.count}</p>
+                    </div>
+                  </div>
+                </Card>
+              </Link>
+            ))}
           </div>
         </div>
-      </Section>
+
+        <div className="mb-20">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h2 className="text-3xl font-bold mb-2">Featured Products</h2>
+              <p className="text-gray-600">Handpicked favorites from our artisan partners</p>
+            </div>
+            <Button asChild variant="outline" className="border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white">
+              <Link href="/shop">View All Products</Link>
+            </Button>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {featuredProducts.map((product) => (
+              <Card key={product.id} className="group overflow-hidden hover:shadow-2xl transition-all duration-300">
+                <div className="relative overflow-hidden">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  {product.badge && (
+                    <Badge className={`absolute top-4 left-4 ${
+                      product.badge === 'Sale' ? 'bg-red-600' :
+                      product.badge === 'New' ? 'bg-green-600' :
+                      'bg-amber-600'
+                    }`}>
+                      {product.badge}
+                    </Badge>
+                  )}
+                  <button className="absolute top-4 right-4 bg-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-amber-600 hover:text-white">
+                    <Heart className="w-5 h-5" />
+                  </button>
+                </div>
+                <CardContent className="p-6">
+                  <p className="text-xs text-amber-600 font-semibold mb-1">{product.category}</p>
+                  <h3 className="text-lg font-semibold mb-2 line-clamp-1 group-hover:text-amber-600 transition-colors">
+                    {product.name}
+                  </h3>
+                  <div className="flex items-center gap-1 mb-3">
+                    <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                    <span className="text-sm font-medium">{product.rating}</span>
+                  </div>
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="text-xl font-bold text-gray-900">₹{product.price}</span>
+                    {product.originalPrice && (
+                      <span className="text-sm text-gray-500 line-through">₹{product.originalPrice}</span>
+                    )}
+                  </div>
+                  <div className="flex gap-2">
+                    <Button asChild className="flex-1 bg-amber-600 hover:bg-amber-700">
+                      <Link href={`/shop/${product.id}`}>View Details</Link>
+                    </Button>
+                    <Button variant="outline" size="icon" className="border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white">
+                      <ShoppingCart className="w-5 h-5" />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-12 mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold mb-4">Meet Our Artisans</h2>
+              <p className="text-gray-700 mb-6 leading-relaxed">
+                Every product tells a story. Behind each handcrafted item is a skilled artisan preserving centuries-old traditions. When you shop with us, you&apos;re directly supporting their craft and helping preserve India&apos;s cultural heritage.
+              </p>
+              <Button asChild className="bg-amber-600 hover:bg-amber-700">
+                <Link href="/about">Learn More About Our Impact</Link>
+              </Button>
+            </div>
+            <div className="relative">
+              <img
+                src="https://images.pexels.com/photos/5650003/pexels-photo-5650003.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Artisan at work"
+                className="rounded-lg shadow-xl"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <Card>
+            <CardHeader>
+              <CardTitle>Latest Blog</CardTitle>
+              <CardDescription>Insights from the world of handicrafts</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <img
+                src="https://images.pexels.com/photos/5650095/pexels-photo-5650095.jpeg?auto=compress&cs=tinysrgb&w=400"
+                alt="Blog post"
+                className="w-full h-40 object-cover rounded-lg mb-4"
+              />
+              <h3 className="font-semibold mb-2">The Art of Hand Block Printing</h3>
+              <p className="text-sm text-gray-600 mb-4">Discover the centuries-old technique that creates stunning textile patterns...</p>
+              <Button asChild variant="link" className="text-amber-600 px-0">
+                <Link href="/blogs">Read More →</Link>
+              </Button>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>Upcoming Events</CardTitle>
+              <CardDescription>Join us at craft exhibitions</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <img
+                src="https://images.pexels.com/photos/6348119/pexels-photo-6348119.jpeg?auto=compress&cs=tinysrgb&w=400"
+                alt="Event"
+                className="w-full h-40 object-cover rounded-lg mb-4"
+              />
+              <h3 className="font-semibold mb-2">Jaipur Handicraft Fair 2025</h3>
+              <p className="text-sm text-gray-600 mb-4">Meet artisans and explore exclusive collections at India&apos;s largest craft fair...</p>
+              <Button asChild variant="link" className="text-amber-600 px-0">
+                <Link href="/events-exhibitions">View Events →</Link>
+              </Button>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>Newsletter</CardTitle>
+              <CardDescription>Stay updated with new arrivals</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-gray-600 mb-4">
+                Subscribe to receive exclusive offers, artisan stories, and updates on new handcrafted collections.
+              </p>
+              <Button asChild className="w-full bg-amber-600 hover:bg-amber-700">
+                <Link href="/contact-us">Subscribe Now</Link>
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
     </>
   );
 }
