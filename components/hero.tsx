@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 export function Hero({ title, subtitle, actions, kickerTitle, kickerSubtitle }: { title: string; subtitle?: string; actions?: ReactNode; kickerTitle?: string; kickerSubtitle?: string }) {
   return (
-    <div className="relative border-b overflow-hidden" style={{ backgroundImage: "url('https://images.pexels.com/photos/5650095/pexels-photo-5650095.jpeg?auto=compress&cs=tinysrgb&w=1920')", backgroundSize: "cover", backgroundPosition: "center" }}>
+    <div className="relative border-b overflow-hidden" style={{ backgroundImage: "url('https://images.pexels.com/photos/8981462/pexels-photo-8981462.jpeg?auto=compress&cs=tinysrgb&w=1920')", backgroundSize: "cover", backgroundPosition: "center" }}>
       <div className="absolute inset-0 bg-gradient-to-br from-primary/40 via-primary/50 to-accent/60"></div>
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-20 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
