@@ -1,0 +1,42 @@
+[
+  {
+    "id": "user_1",
+    "email": "priya.sharma@example.com",
+    "role": "MAKER",
+    "isActive": true,
+    "createdAt": "2024-01-15T10:30:00Z",
+    "updatedAt": "2024-01-15T10:30:00Z"
+  },
+  {
+    "id": "user_2", 
+    "email": "rajesh.kumar@example.com",
+    "role": "DESIGN_CONSULTANT",
+    "isActive": true,
+    "createdAt": "2024-01-20T14:15:00Z",
+    "updatedAt": "2024-01-20T14:15:00Z"
+  },
+  {
+    "id": "user_3",
+    "email": "anita.patel@example.com", 
+    "role": "BUYER",
+    "isActive": true,
+    "createdAt": "2024-02-01T09:45:00Z",
+    "updatedAt": "2024-02-01T09:45:00Z"
+  },
+  {
+    "id": "user_4",
+    "email": "vikram.singh@example.com",
+    "role": "SERVICE_PROVIDER", 
+    "isActive": true,
+    "createdAt": "2024-02-10T16:20:00Z",
+    "updatedAt": "2024-02-10T16:20:00Z"
+  },
+  {
+    "id": "user_5",
+    "email": "sunita.devi@example.com",
+    "role": "MAKER_BUYER",
+    "isActive": true,
+    "createdAt": "2024-02-15T11:30:00Z",
+    "updatedAt": "2024-02-15T11:30:00Z"
+  }
+]

@@ -1,0 +1,22 @@
+:root {
+  /* Primary brand color (inspired by popular handmade marketplaces) */
+  --brand: #F16521;
+  --brand-foreground: #ffffff;
+  --bg: var(--background);
+  --fg: var(--foreground);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.56 0 0);
+  --ring: var(--ring);
+}
+
+.dark {
+  /* Dark-mode brand variant: slightly lighter orange for contrast */
+  --brand: #FF8A4B;
+  --brand-foreground: #111111;
+  --bg: var(--background);
+  --fg: var(--foreground);
+  --muted: oklch(0.27 0 0);
+  --muted-foreground: oklch(0.7 0 0);
+}
+
+
