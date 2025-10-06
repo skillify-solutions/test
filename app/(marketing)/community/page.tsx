@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Hero from "@/components/hero";
 import Section from "@/components/section";
+import { Card } from "@/components/ui/card";
 
 const communityPosts = [
   {
@@ -96,12 +97,17 @@ export default function CommunityPage() {
         {/* Community Posts */}
         <div className="space-y-8 mb-12">
           {paginatedPosts.map((post) => (
-            <article key={post.id} className="flex gap-6 p-6 rounded-xl border bg-card">
+            <Card key={post.id} className="flex gap-6 p-6">
               {/* Left Section - Image placeholder (40% width) */}
-              <div className="w-2/5 aspect-[4/3] rounded-xl bg-muted flex-shrink-0 flex items-center justify-center">
-                <div className="w-12 h-12 bg-muted-foreground/20 rounded flex items-center justify-center">
-                  <div className="w-6 h-6 bg-muted-foreground/40 rounded"></div>
-                </div>
+              <div className="w-2/5 aspect-[4/3] rounded bg-muted flex-shrink-0 overflow-hidden">
+                <img src={[
+                  "https://images.pexels.com/photos/5650095/pexels-photo-5650095.jpeg?auto=compress&cs=tinysrgb&w=800",
+                  "https://images.pexels.com/photos/5650026/pexels-photo-5650026.jpeg?auto=compress&cs=tinysrgb&w=800",
+                  "https://images.pexels.com/photos/5650003/pexels-photo-5650003.jpeg?auto=compress&cs=tinysrgb&w=800",
+                  "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800",
+                  "https://images.pexels.com/photos/1762851/pexels-photo-1762851.jpeg?auto=compress&cs=tinysrgb&w=800",
+                  "https://images.pexels.com/photos/6348119/pexels-photo-6348119.jpeg?auto=compress&cs=tinysrgb&w=800"
+                ][(post.id - 1) % 6]} alt={post.title} className="w-full h-full object-cover" />
               </div>
               
               {/* Right Section - Content (60% width) */}
@@ -134,7 +140,7 @@ export default function CommunityPage() {
                   </button>
                 </div>
               </div>
-            </article>
+            </Card>
           ))}
         </div>
 
@@ -143,7 +149,7 @@ export default function CommunityPage() {
           <button
             onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
             disabled={currentPage === 1}
-            className="px-3 py-2 text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-muted rounded-xl"
+            className="px-3 py-2 text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-muted rounded"
           >
             ←
           </button>
@@ -154,7 +160,7 @@ export default function CommunityPage() {
               <button
                 key={pageNum}
                 onClick={() => setCurrentPage(pageNum)}
-                className={`px-3 py-2 text-sm rounded-xl ${
+                className={`px-3 py-2 text-sm rounded ${
                   currentPage === pageNum
                     ? "bg-foreground text-background"
                     : "hover:bg-muted"
@@ -170,7 +176,7 @@ export default function CommunityPage() {
               <span className="px-2">...</span>
               <button
                 onClick={() => setCurrentPage(totalPages)}
-                className="px-3 py-2 text-sm hover:bg-muted rounded-xl"
+                className="px-3 py-2 text-sm hover:bg-muted rounded"
               >
                 {totalPages}
               </button>
@@ -180,7 +186,7 @@ export default function CommunityPage() {
           <button
             onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
             disabled={currentPage === totalPages}
-            className="px-3 py-2 text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-muted rounded-xl"
+            className="px-3 py-2 text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-muted rounded"
           >
             →
           </button>

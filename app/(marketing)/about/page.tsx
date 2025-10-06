@@ -16,24 +16,24 @@ export default function AboutPage() {
           {/* Sidebar */}
           <aside className="md:col-span-3 md:sticky md:top-24 md:h-fit">
             <nav className="flex flex-col gap-4">
-              <Button asChild variant="outline" className="justify-between rounded-2xl h-12 px-5">
+              <Button asChild variant="outline" className="justify-between rounded h-12 px-5">
                 <a href="#why">Why Artisan</a>
               </Button>
-              <Button asChild variant="outline" className="justify-between rounded-2xl h-12 px-5">
+              <Button asChild variant="outline" className="justify-between rounded h-12 px-5">
                 <a href="#mission">Mission</a>
               </Button>
-              <Button asChild variant="outline" className="justify-between rounded-2xl h-12 px-5">
+              <Button asChild variant="outline" className="justify-between rounded h-12 px-5">
                 <a href="#vision">Vision</a>
               </Button>
-              <Button asChild variant="outline" className="justify-between rounded-2xl h-12 px-5">
+              <Button asChild variant="outline" className="justify-between rounded h-12 px-5">
                 <a href="#team">Our Team</a>
               </Button>
-              <Button asChild variant="outline" className="justify-between rounded-2xl h-12 px-5">
+              <Button asChild variant="outline" className="justify-between rounded h-12 px-5">
                 <a href="#partners">Partners & Collaborators</a>
               </Button>
             </nav>
             <div className="mt-6">
-              <Button asChild className="w-full h-12 rounded-2xl px-6">
+              <Button asChild className="w-full h-12 rounded px-6">
                 <a href="/contact-us">Contact Us</a>
               </Button>
             </div>
@@ -55,7 +55,10 @@ export default function AboutPage() {
                 perferendis doloribus asperiores repellat.
               </p>
 
-              <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+              <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <img src="https://images.pexels.com/photos/5650026/pexels-photo-5650026.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Artisan at work" className="aspect-[4/3] rounded w-full object-cover shadow-sm" />
+                <img src="https://images.pexels.com/photos/5650095/pexels-photo-5650095.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Traditional crafts" className="aspect-[4/3] rounded w-full object-cover shadow-sm" />
+              </div>
             </section>
 
             {/* Mission + Vision side-by-side */}
@@ -82,7 +85,7 @@ export default function AboutPage() {
             {/* Team */}
             <section id="team" className="mt-20">
               <h3 className="text-3xl md:text-5xl font-semibold tracking-tight">OUR TEAM</h3>
-              <div className="mt-8 rounded-xl bg-muted aspect-[16/6]"></div>
+              <img src="https://images.pexels.com/photos/3184423/pexels-photo-3184423.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Our team" className="mt-8 rounded aspect-[16/6] w-full object-cover shadow-sm" />
               <p className="mt-4 text-center italic text-muted-foreground">
                 At vero eos et accusamus et iusto odio dignissimos ducimus
               </p>
@@ -91,7 +94,13 @@ export default function AboutPage() {
             {/* Partners */}
             <section id="partners" className="mt-20">
               <h3 className="text-3xl md:text-5xl font-semibold tracking-tight">OUR PARTNERS & COLLABORATORS</h3>
-              <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6"></div>
+              <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+                {Array.from({ length: 10 }).map((_, i) => (
+                  <div key={i} className="aspect-square rounded bg-muted flex items-center justify-center border border-border">
+                    <span className="text-xs font-semibold text-primary">Partner {i + 1}</span>
+                  </div>
+                ))}
+              </div>
             </section>
           </div>
         </div>

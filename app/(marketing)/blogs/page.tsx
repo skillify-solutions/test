@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Hero from "@/components/hero";
 import Section from "@/components/section";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
 const categories = ["Category One", "Category Two", "Category Three", "Category Four"];
 
@@ -153,7 +154,7 @@ export default function BlogsPage() {
                 setActiveCategory(category);
                 setCurrentPage(1);
               }}
-              className={`px-6 py-3 rounded-2xl text-sm font-medium transition-colors ${
+              className={`px-6 py-3 rounded text-sm font-medium transition-colors uppercase tracking-wider ${
                 activeCategory === category
                   ? "bg-muted text-foreground border border-border"
                   : "text-muted-foreground hover:text-foreground"
@@ -166,16 +167,27 @@ export default function BlogsPage() {
 
         {/* Blog Posts Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-12">
-          {paginatedPosts.map((post) => (
-            <article key={post.id} className="grid gap-3">
-              <div className="aspect-[16/10] w-full rounded-xl bg-muted"></div>
-              <h3 className="text-lg font-medium leading-tight">{post.title}</h3>
-              <p className="text-sm text-muted-foreground">{post.author} | {post.date}</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">{post.excerpt}</p>
-              <a href={`/blogs/${post.id}`} className="text-sm underline hover:no-underline transition-all">
-                Read Now →
-              </a>
-            </article>
+          {paginatedPosts.map((post, idx) => (
+            <Card key={post.id} className="group hover:shadow-lg transition-all duration-300">
+              <CardContent className="p-0 overflow-hidden">
+                <img src={[
+                  "https://images.pexels.com/photos/5650095/pexels-photo-5650095.jpeg?auto=compress&cs=tinysrgb&w=800",
+                  "https://images.pexels.com/photos/5650026/pexels-photo-5650026.jpeg?auto=compress&cs=tinysrgb&w=800",
+                  "https://images.pexels.com/photos/5650003/pexels-photo-5650003.jpeg?auto=compress&cs=tinysrgb&w=800",
+                  "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800",
+                  "https://images.pexels.com/photos/1762851/pexels-photo-1762851.jpeg?auto=compress&cs=tinysrgb&w=800",
+                  "https://images.pexels.com/photos/6348119/pexels-photo-6348119.jpeg?auto=compress&cs=tinysrgb&w=800"
+                ][idx % 6]} alt={post.title} className="aspect-[16/10] rounded-t w-full object-cover" />
+              </CardContent>
+              <CardHeader>
+                <CardTitle className="text-lg leading-tight group-hover:text-primary transition-colors duration-200">{post.title}</CardTitle>
+                <CardDescription className="text-sm">{post.author} | {post.date}</CardDescription>
+                <CardDescription className="text-sm leading-relaxed">{post.excerpt}</CardDescription>
+                <a href={`/blogs/${post.id}`} className="text-sm underline hover:no-underline transition-all inline-block">
+                  Read Now →
+                </a>
+              </CardHeader>
+            </Card>
           ))}
         </div>
 
@@ -184,7 +196,7 @@ export default function BlogsPage() {
           <button
             onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
             disabled={currentPage === 1}
-            className="px-3 py-2 text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-muted rounded-xl"
+            className="px-3 py-2 text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-muted rounded"
           >
             ←
           </button>
@@ -195,7 +207,7 @@ export default function BlogsPage() {
               <button
                 key={pageNum}
                 onClick={() => setCurrentPage(pageNum)}
-                className={`px-3 py-2 text-sm rounded-xl ${
+                className={`px-3 py-2 text-sm rounded ${
                   currentPage === pageNum
                     ? "bg-foreground text-background"
                     : "hover:bg-muted"
@@ -211,7 +223,7 @@ export default function BlogsPage() {
               <span className="px-2">...</span>
               <button
                 onClick={() => setCurrentPage(totalPages)}
-                className="px-3 py-2 text-sm hover:bg-muted rounded-xl"
+                className="px-3 py-2 text-sm hover:bg-muted rounded"
               >
                 {totalPages}
               </button>
@@ -221,7 +233,7 @@ export default function BlogsPage() {
           <button
             onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
             disabled={currentPage === totalPages}
-            className="px-3 py-2 text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-muted rounded-xl"
+            className="px-3 py-2 text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-muted rounded"
           >
             →
           </button>

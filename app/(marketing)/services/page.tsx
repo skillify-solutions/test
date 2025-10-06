@@ -1,6 +1,7 @@
 import Hero from "@/components/hero";
 import Section from "@/components/section";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
 export default function ServicesPage() {
   return (
@@ -12,30 +13,30 @@ export default function ServicesPage() {
           {/* Sticky sidebar */}
           <aside className="md:col-span-3 md:sticky md:top-24 md:h-fit">
             <nav className="flex flex-col gap-4">
-              <Button asChild variant="outline" className="justify-between rounded-2xl h-12 px-5">
+              <Button asChild variant="outline" className="justify-between rounded h-12 px-5">
                 <a href="#partners">Partner Websites</a>
               </Button>
-              <Button asChild variant="outline" className="justify-between rounded-2xl h-12 px-5">
+              <Button asChild variant="outline" className="justify-between rounded h-12 px-5">
                 <a href="#craft-care">Craft Care Fund</a>
               </Button>
-              <Button asChild variant="outline" className="justify-between rounded-2xl h-12 px-5">
+              <Button asChild variant="outline" className="justify-between rounded h-12 px-5">
                 <a href="#seed-fund">Seed Fund for Enterprises by</a>
               </Button>
-              <Button asChild variant="outline" className="justify-between rounded-2xl h-12 px-5">
+              <Button asChild variant="outline" className="justify-between rounded h-12 px-5">
                 <a href="#providers">Service Providers</a>
               </Button>
-              <Button asChild variant="outline" className="justify-between rounded-2xl h-12 px-5">
+              <Button asChild variant="outline" className="justify-between rounded h-12 px-5">
                 <a href="#events">Events & Exhibitions</a>
               </Button>
-              <Button asChild variant="outline" className="justify-between rounded-2xl h-12 px-5">
+              <Button asChild variant="outline" className="justify-between rounded h-12 px-5">
                 <a href="#retail">Retails Outlets  Supplied by CD</a>
               </Button>
-              <Button asChild variant="outline" className="justify-between rounded-2xl h-12 px-5">
+              <Button asChild variant="outline" className="justify-between rounded h-12 px-5">
                 <a href="#ask">Ask me anything</a>
               </Button>
             </nav>
             <div className="mt-6">
-              <Button className="w-full h-12 rounded-2xl px-6">List your services here</Button>
+              <Button className="w-full h-12 rounded px-6">List your services here</Button>
             </div>
           </aside>
 
@@ -45,21 +46,29 @@ export default function ServicesPage() {
             <section id="partners" className="scroll-mt-24">
               <div className="flex items-center justify-between">
                 <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">PARTNER WEBSITES</h2>
-                <Button asChild variant="outline" className="rounded-2xl h-11 px-6" withArrow>
+                <Button asChild variant="outline" className="rounded h-11 px-6" withArrow>
                   <a href="/partner-websites">View All</a>
                 </Button>
               </div>
               <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-10">
-                {Array.from({ length: 3 }).map((_, idx) => (
-                  <article key={idx}>
-                    <div className="aspect-[16/10] w-full rounded-xl bg-muted"></div>
-                    <h3 className="mt-6 text-lg font-medium">Creative Dignity</h3>
-                    <p className="mt-2 text-muted-foreground leading-7">
-                      This fund supports [specific craft] and the artisans behind it. It helps preserve traditions while
-                      encouraging new ideas. Our goal is to keep the craft thriving for generations.
-                    </p>
-                    <a href="#" className="mt-4 inline-block underline">Visit Now</a>
-                  </article>
+                {[
+                  "https://images.pexels.com/photos/5650026/pexels-photo-5650026.jpeg?auto=compress&cs=tinysrgb&w=800",
+                  "https://images.pexels.com/photos/5650003/pexels-photo-5650003.jpeg?auto=compress&cs=tinysrgb&w=800",
+                  "https://images.pexels.com/photos/5650095/pexels-photo-5650095.jpeg?auto=compress&cs=tinysrgb&w=800"
+                ].map((img, idx) => (
+                  <Card key={idx} className="group hover:shadow-lg transition-all duration-300">
+                    <CardContent className="p-0 overflow-hidden">
+                      <img src={img} alt="Partner website" className="aspect-[16/10] rounded-t w-full object-cover" />
+                    </CardContent>
+                    <CardHeader>
+                      <CardTitle className="text-lg group-hover:text-primary transition-colors duration-200">Creative Dignity</CardTitle>
+                      <CardDescription className="leading-7">
+                        This fund supports specific crafts and the artisans behind it. It helps preserve traditions while
+                        encouraging new ideas. Our goal is to keep the craft thriving for generations.
+                      </CardDescription>
+                      <a href="#" className="inline-block underline hover:no-underline transition-all text-sm">Visit Now</a>
+                    </CardHeader>
+                  </Card>
                 ))}
               </div>
             </section>
@@ -75,13 +84,13 @@ export default function ServicesPage() {
                       encouraging new ideas. Our goal is to keep the craft thriving for generations.
                     </p>
                     <div className="mt-8">
-                      <Button asChild variant="outline" className="rounded-2xl h-12 px-6" withArrow>
+                      <Button asChild variant="outline" className="rounded h-12 px-6" withArrow>
                         <a href="/craft-care-fund">Know More</a>
                       </Button>
                     </div>
                   </div>
                   <div className="md:col-span-5">
-                    <div className="aspect-[16/10] w-full rounded-xl bg-background/60"></div>
+                    <img src="https://images.pexels.com/photos/5650003/pexels-photo-5650003.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Craft Care Fund" className="aspect-[16/10] w-full rounded object-cover shadow-sm" />
                   </div>
                 </div>
               </div>
@@ -100,17 +109,25 @@ export default function ServicesPage() {
                   { title: "Rang De", slug: "rang-de" },
                   { title: "Tarasha", slug: "tarasha" },
                 ].map((item, idx) => (
-                  <article key={idx} className="snap-start">
-                    <a href={`/seed-fund/${item.slug}`} className="block group">
-                      <div className="aspect-[16/11] w-full rounded-xl bg-muted group-hover:bg-muted/80 transition-colors"></div>
-                      <h4 className="mt-6 text-lg font-medium group-hover:text-primary transition-colors">{item.title}</h4>
-                      <p className="mt-2 text-muted-foreground leading-7">
-                        This fund supports [specific craft] and the artisans behind it. It helps preserve traditions while
-                        encouraging new ideas. Our goal is to keep the craft thriving for generations.
-                      </p>
-                      <span className="mt-4 inline-block underline group-hover:no-underline transition-all">Visit Now</span>
+                  <Card key={idx} className="snap-start group hover:shadow-lg transition-all duration-300">
+                    <a href={`/seed-fund/${item.slug}`} className="block">
+                      <CardContent className="p-0 overflow-hidden">
+                        <img src={[
+                          "https://images.pexels.com/photos/5650095/pexels-photo-5650095.jpeg?auto=compress&cs=tinysrgb&w=800",
+                          "https://images.pexels.com/photos/5650026/pexels-photo-5650026.jpeg?auto=compress&cs=tinysrgb&w=800",
+                          "https://images.pexels.com/photos/5650003/pexels-photo-5650003.jpeg?auto=compress&cs=tinysrgb&w=800"
+                        ][idx % 3]} alt={item.title} className="aspect-[16/11] rounded-t w-full object-cover" />
+                      </CardContent>
+                      <CardHeader>
+                        <CardTitle className="text-lg group-hover:text-primary transition-colors duration-200">{item.title}</CardTitle>
+                        <CardDescription className="leading-7">
+                          This fund supports specific crafts and the artisans behind it. It helps preserve traditions while
+                          encouraging new ideas. Our goal is to keep the craft thriving for generations.
+                        </CardDescription>
+                        <span className="inline-block underline group-hover:no-underline transition-all text-sm">Visit Now</span>
+                      </CardHeader>
                     </a>
-                  </article>
+                  </Card>
                 ))}
                 </div>
               </div>
@@ -120,21 +137,29 @@ export default function ServicesPage() {
             <section id="providers" className="mt-24 scroll-mt-24">
               <div className="flex items-center justify-between">
                 <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">SERVICE PROVIDERS</h2>
-                <Button asChild variant="outline" className="rounded-2xl h-11 px-6" withArrow>
+                <Button asChild variant="outline" className="rounded h-11 px-6" withArrow>
                   <a href="/service-providers">View All</a>
                 </Button>
               </div>
               <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-10">
-                {Array.from({ length: 3 }).map((_, idx) => (
-                  <article key={idx}>
-                    <div className="aspect-[16/10] w-full rounded-xl bg-muted"></div>
-                    <h3 className="mt-6 text-lg font-medium">Insurance</h3>
-                    <p className="mt-2 text-muted-foreground leading-7">
-                      This fund supports [specific craft] and the artisans behind it. It helps preserve traditions while
-                      encouraging new ideas. Our goal is to keep the craft thriving for generations.
-                    </p>
-                    <a href="#" className="mt-4 inline-block underline">Visit Now</a>
-                  </article>
+                {[
+                  {title: "Insurance", img: "https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=800"},
+                  {title: "Legal Services", img: "https://images.pexels.com/photos/7688460/pexels-photo-7688460.jpeg?auto=compress&cs=tinysrgb&w=800"},
+                  {title: "Marketing", img: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800"}
+                ].map((service, idx) => (
+                  <Card key={idx} className="group hover:shadow-lg transition-all duration-300">
+                    <CardContent className="p-0 overflow-hidden">
+                      <img src={service.img} alt={service.title} className="aspect-[16/10] rounded-t w-full object-cover" />
+                    </CardContent>
+                    <CardHeader>
+                      <CardTitle className="text-lg group-hover:text-primary transition-colors duration-200">{service.title}</CardTitle>
+                      <CardDescription className="leading-7">
+                        This fund supports specific crafts and the artisans behind it. It helps preserve traditions while
+                        encouraging new ideas. Our goal is to keep the craft thriving for generations.
+                      </CardDescription>
+                      <a href="#" className="inline-block underline hover:no-underline transition-all text-sm">Visit Now</a>
+                    </CardHeader>
+                  </Card>
                 ))}
               </div>
             </section>
@@ -143,28 +168,36 @@ export default function ServicesPage() {
             <section id="events" className="mt-24 scroll-mt-24">
               <div className="flex items-center justify-between">
                 <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">EVENTS & EXHIBITIONS</h2>
-                <Button asChild variant="outline" className="rounded-2xl h-11 px-6" withArrow>
+                <Button asChild variant="outline" className="rounded h-11 px-6" withArrow>
                   <a href="/events-exhibitions">View All</a>
                 </Button>
               </div>
               <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-10">
-                {Array.from({ length: 3 }).map((_, idx) => (
-                  <article key={idx}>
-                    <div className="aspect-[16/10] w-full rounded-xl bg-muted"></div>
-                    <h3 className="mt-6 text-lg font-medium">Rajasthan Crafts Bazaar</h3>
-                    <p className="mt-1 text-sm text-muted-foreground">Jaipur — Sep 15–18, 2025 • Apply by Aug 25</p>
-                    <p className="mt-2 text-muted-foreground leading-7">
-                      Data is used to enable discovery, events and training. Personal contact info is shared only with consent.
-                    </p>
-                    <a href="#" className="mt-4 inline-block underline">Learn more</a>
-                  </article>
+                {[
+                  "https://images.pexels.com/photos/1762851/pexels-photo-1762851.jpeg?auto=compress&cs=tinysrgb&w=800",
+                  "https://images.pexels.com/photos/6348119/pexels-photo-6348119.jpeg?auto=compress&cs=tinysrgb&w=800",
+                  "https://images.pexels.com/photos/5650095/pexels-photo-5650095.jpeg?auto=compress&cs=tinysrgb&w=800"
+                ].map((img, idx) => (
+                  <Card key={idx} className="group hover:shadow-lg transition-all duration-300">
+                    <CardContent className="p-0 overflow-hidden">
+                      <img src={img} alt="Event" className="aspect-[16/10] rounded-t w-full object-cover" />
+                    </CardContent>
+                    <CardHeader>
+                      <CardTitle className="text-lg group-hover:text-primary transition-colors duration-200">Rajasthan Crafts Bazaar</CardTitle>
+                      <CardDescription className="text-sm">Jaipur — Sep 15–18, 2025 • Apply by Aug 25</CardDescription>
+                      <CardDescription className="leading-7">
+                        Data is used to enable discovery, events and training. Personal contact info is shared only with consent.
+                      </CardDescription>
+                      <a href="#" className="inline-block underline hover:no-underline transition-all text-sm">Learn more</a>
+                    </CardHeader>
+                  </Card>
                 ))}
               </div>
               <div className="mt-10 flex flex-wrap gap-4">
-                <Button className="rounded-2xl h-11 px-6" withArrow>
+                <Button className="rounded h-11 px-6" withArrow>
                   View Calendar
                 </Button>
-                <Button variant="outline" className="rounded-2xl h-11 px-6" withArrow>
+                <Button variant="outline" className="rounded h-11 px-6" withArrow>
                   Submit an Event
                 </Button>
               </div>
@@ -174,20 +207,28 @@ export default function ServicesPage() {
             <section id="retail" className="mt-24 scroll-mt-24">
               <div className="flex items-center justify-between">
                 <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">RETAIL OUTLETS</h2>
-                <Button asChild variant="outline" className="rounded-2xl h-11 px-6" withArrow>
+                <Button asChild variant="outline" className="rounded h-11 px-6" withArrow>
                   <a href="/retail-outlets">View All</a>
             </Button>
               </div>
               <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-10">
-                {Array.from({ length: 3 }).map((_, idx) => (
-                  <article key={idx}>
-                    <div className="aspect-[16/10] w-full rounded-xl bg-muted"></div>
-                    <h3 className="mt-6 text-lg font-medium">FairKraft Creations</h3>
-                    <p className="mt-2 text-muted-foreground leading-7">
-                      Data is used to enable discovery, events and training. Personal contact info is shared only with consent.
-                    </p>
-                    <a href="#" className="mt-4 inline-block underline">Contact</a>
-                  </article>
+                {[
+                  "https://images.pexels.com/photos/5706712/pexels-photo-5706712.jpeg?auto=compress&cs=tinysrgb&w=800",
+                  "https://images.pexels.com/photos/6347888/pexels-photo-6347888.jpeg?auto=compress&cs=tinysrgb&w=800",
+                  "https://images.pexels.com/photos/3829227/pexels-photo-3829227.jpeg?auto=compress&cs=tinysrgb&w=800"
+                ].map((img, idx) => (
+                  <Card key={idx} className="group hover:shadow-lg transition-all duration-300">
+                    <CardContent className="p-0 overflow-hidden">
+                      <img src={img} alt="Retail outlet" className="aspect-[16/10] rounded-t w-full object-cover" />
+                    </CardContent>
+                    <CardHeader>
+                      <CardTitle className="text-lg group-hover:text-primary transition-colors duration-200">FairKraft Creations</CardTitle>
+                      <CardDescription className="leading-7">
+                        Data is used to enable discovery, events and training. Personal contact info is shared only with consent.
+                      </CardDescription>
+                      <a href="#" className="inline-block underline hover:no-underline transition-all text-sm">Contact</a>
+                    </CardHeader>
+                  </Card>
                 ))}
               </div>
             </section>
@@ -218,7 +259,7 @@ export default function ServicesPage() {
                 <div className="border-b py-12" />
               </div>
               <div className="mt-8">
-                <Button className="rounded-2xl h-11 px-6" withArrow>
+                <Button className="rounded h-11 px-6" withArrow>
                   Send
                 </Button>
               </div>
