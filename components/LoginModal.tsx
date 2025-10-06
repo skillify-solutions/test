@@ -18,8 +18,39 @@ export default function LoginModal({ children }: { children: React.ReactNode }) 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Login form submitted:", form);
-    // Here you would typically handle the login logic
-    setIsOpen(false); // Close modal after submission
+    
+    // Dummy login credentials for testing
+    const dummyCredentials = [
+      { email: "priya.sharma@example.com", password: "password123", role: "MAKER", name: "Priya Sharma" },
+      { email: "rajesh.kumar@example.com", password: "password123", role: "DESIGN_CONSULTANT", name: "Rajesh Kumar" },
+      { email: "anita.patel@example.com", password: "password123", role: "BUYER", name: "Anita Patel" },
+      { email: "vikram.singh@example.com", password: "password123", role: "SERVICE_PROVIDER", name: "Vikram Singh" },
+      { email: "sunita.devi@example.com", password: "password123", role: "MAKER_BUYER", name: "Sunita Devi" },
+      { email: "admin@artisan.com", password: "admin123", role: "ADMIN", name: "Admin User" }
+    ];
+    
+    // Check if credentials match
+    const user = dummyCredentials.find(
+      cred => cred.email === form.username && cred.password === form.password
+    );
+    
+    if (user) {
+      // Store user data in localStorage for session management
+      localStorage.setItem('user', JSON.stringify({
+        email: user.email,
+        role: user.role,
+        name: user.name,
+        isLoggedIn: true
+      }));
+      
+      console.log("Login successful:", user);
+      setIsOpen(false);
+      
+      // Redirect to dashboard
+      window.location.href = '/dashboard';
+    } else {
+      alert("Invalid credentials. Please try again.\n\nDummy credentials:\n• priya.sharma@example.com / password123 (Maker)\n• rajesh.kumar@example.com / password123 (Design Consultant)\n• anita.patel@example.com / password123 (Buyer)\n• vikram.singh@example.com / password123 (Service Provider)\n• sunita.devi@example.com / password123 (Maker-Buyer)\n• admin@artisan.com / admin123 (Admin)");
+    }
   };
 
   return (
@@ -87,6 +118,17 @@ export default function LoginModal({ children }: { children: React.ReactNode }) 
               </Button>
             </div>
           </form>
+
+          {/* Dummy Credentials Info */}
+          <div className="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+            <p className="text-xs text-amber-800 font-medium mb-2">Demo Credentials:</p>
+            <div className="text-xs text-amber-700 space-y-1">
+              <p>• priya.sharma@example.com / password123 (Maker)</p>
+              <p>• anita.patel@example.com / password123 (Buyer)</p>
+              <p>• vikram.singh@example.com / password123 (Service Provider)</p>
+              <p>• admin@artisan.com / admin123 (Admin)</p>
+            </div>
+          </div>
 
           {/* Additional Links */}
           <div className="mt-6 text-center space-y-2">

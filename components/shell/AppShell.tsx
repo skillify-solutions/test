@@ -1,9 +1,9 @@
 "use client"
 
 import { ReactNode } from 'react'
+import { usePathname } from 'next/navigation'
 import { TopNav } from './TopNav'
 import { SideNav } from './SideNav'
-import { usePathname } from 'next/navigation'
 
 interface AppShellProps {
   children: ReactNode
@@ -17,7 +17,7 @@ export function AppShell({ children, showSidebar = false }: AppShellProps) {
   const shouldShowSidebar = showSidebar || pathname.startsWith('/dashboard') || pathname.startsWith('/admin')
   
   return (
-    <div className="min-h-screen bg-background">
+    <>
       <TopNav />
       <div className="flex">
         {shouldShowSidebar && <SideNav />}
@@ -25,6 +25,6 @@ export function AppShell({ children, showSidebar = false }: AppShellProps) {
           {children}
         </main>
       </div>
-    </div>
+    </>
   )
 }

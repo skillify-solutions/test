@@ -23,7 +23,7 @@ export default function Home() {
 
       {/* Stats strip (with intro paragraph above like in mockup) */}
       <Section className="pt-8">
-        <p className="mx-auto max-w-3xl text-center text-sm text-muted-foreground">
+        <p className="mx-auto max-w-3xl text-center text-sm text-gray-600 leading-relaxed">
           Artisan amplifies visibility for India&apos;s handmade ecosystem, fixes data gaps, and creates short pathways to
           markets. The platform is designed to preserve craft knowledge, improve livelihoods and protect authenticity —
           combining digital tools with our partners’ field teams who support outreach, training and market integration.
@@ -35,10 +35,10 @@ export default function Home() {
             ["18", "DISTRICTS"],
             ["1,300+", "CRAFTS MAPPED"],
             ["120+", "EVENTS LISTED"],
-          ].map(([num, label]) => (
-            <div key={label as string} className="grid gap-1">
-              <div className="text-3xl font-semibold tracking-tight">{num}</div>
-              <div className="text-xs tracking-wide text-muted-foreground">{label}</div>
+          ].map(([num, label], index) => (
+            <div key={label as string} className="grid gap-1 p-4 rounded-lg bg-white/50 backdrop-blur-sm border border-white/20 hover:bg-white/70 transition-all duration-300 hover:scale-105">
+              <div className="text-3xl font-bold tracking-tight bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">{num}</div>
+              <div className="text-xs tracking-wide text-gray-600 font-medium">{label}</div>
             </div>
           ))}
         </div>
@@ -46,15 +46,15 @@ export default function Home() {
 
       {/* The community behind the platform */}
       <Section>
-        <h2 className="text-[22px] font-semibold tracking-tight">THE COMMUNITY BEHIND THE PLATFORM</h2>
+        <h2 className="text-[22px] font-semibold tracking-tight bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">THE COMMUNITY BEHIND THE PLATFORM</h2>
         <div className="mt-6 grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
           <div className="md:col-span-3">
             <ul className="grid text-[20px] leading-7">
               <li className="border-b">
                 <button 
                   onClick={() => setActiveTab("maker")}
-                  className={`w-full flex items-center justify-between text-left py-4 font-medium ${
-                    activeTab === "maker" ? "text-foreground" : "text-muted-foreground"
+                  className={`w-full flex items-center justify-between text-left py-4 font-medium transition-all duration-200 hover:bg-amber-50 rounded-lg px-2 ${
+                    activeTab === "maker" ? "text-amber-700 bg-amber-50" : "text-gray-600 hover:text-amber-600"
                   }`}
                 >
                   Maker
@@ -64,8 +64,8 @@ export default function Home() {
               <li className="border-b">
                 <button 
                   onClick={() => setActiveTab("market")}
-                  className={`w-full text-left py-4 ${
-                    activeTab === "market" ? "font-medium text-foreground" : "text-muted-foreground"
+                  className={`w-full text-left py-4 transition-all duration-200 hover:bg-amber-50 rounded-lg px-2 ${
+                    activeTab === "market" ? "font-medium text-amber-700 bg-amber-50" : "text-gray-600 hover:text-amber-600"
                   }`}
                 >
                   Market Channel
@@ -75,8 +75,8 @@ export default function Home() {
               <li className="border-b">
                 <button 
                   onClick={() => setActiveTab("design")}
-                  className={`w-full text-left py-4 ${
-                    activeTab === "design" ? "font-medium text-foreground" : "text-muted-foreground"
+                  className={`w-full text-left py-4 transition-all duration-200 hover:bg-amber-50 rounded-lg px-2 ${
+                    activeTab === "design" ? "font-medium text-amber-700 bg-amber-50" : "text-gray-600 hover:text-amber-600"
                   }`}
                 >
                   Design Consultant
@@ -183,16 +183,16 @@ export default function Home() {
         </div>
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           {Array.from({ length: 4 }).map((_, i) => (
-            <Card key={i}>
-              <CardContent className="p-0">
-                <img src="/images/product-new.png" alt="Event" className="aspect-[4/3] rounded-t-2xl w-full object-cover" />
+            <Card key={i} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <CardContent className="p-0 overflow-hidden">
+                <img src="/images/product-new.png" alt="Event" className="aspect-[4/3] rounded-t-xl w-full object-cover group-hover:scale-105 transition-transform duration-300" />
               </CardContent>
               <CardHeader>
-                <CardTitle className="text-sm">Rajasthan Crafts Bazaar</CardTitle>
+                <CardTitle className="text-sm group-hover:text-amber-700 transition-colors duration-200">Rajasthan Crafts Bazaar</CardTitle>
                 <CardDescription className="text-xs">Jaipur — Sep 5–8, 2025 • Apply by Aug 25</CardDescription>
               </CardHeader>
               <div className="px-6 pb-4">
-                <Badge variant="secondary">Exhibition</Badge>
+                <Badge variant="secondary" className="bg-amber-100 text-amber-700 hover:bg-amber-200 transition-colors duration-200">Exhibition</Badge>
               </div>
             </Card>
           ))}
@@ -229,16 +229,16 @@ export default function Home() {
         <h2 className="text-sm font-semibold tracking-wider">RETAIL OUTLETS</h2>
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           {Array.from({ length: 4 }).map((_, i) => (
-            <Card key={i}>
-              <CardContent className="p-0">
-                <img src="/images/product-new.png" alt="Retail Outlet" className="aspect-[4/3] rounded-t-2xl w-full object-cover" />
+            <Card key={i} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <CardContent className="p-0 overflow-hidden">
+                <img src="/images/product-new.png" alt="Retail Outlet" className="aspect-[4/3] rounded-t-xl w-full object-cover group-hover:scale-105 transition-transform duration-300" />
               </CardContent>
               <CardHeader>
-                <CardTitle className="text-sm">FairKraft Creations</CardTitle>
+                <CardTitle className="text-sm group-hover:text-amber-700 transition-colors duration-200">FairKraft Creations</CardTitle>
                 <CardDescription className="text-xs">Data is used to enable discovery, events and training. Personal contact info is shared only with consent.</CardDescription>
               </CardHeader>
               <div className="px-6 pb-4">
-                <Badge variant="secondary">Retail</Badge>
+                <Badge variant="secondary" className="bg-green-100 text-green-700 hover:bg-green-200 transition-colors duration-200">Retail</Badge>
               </div>
             </Card>
           ))}

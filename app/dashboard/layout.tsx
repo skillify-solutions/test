@@ -6,8 +6,10 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   return (
-    <AppShell showSidebar={true}>
-      {children}
-    </AppShell>
+    <div className="min-h-screen bg-background">
+      <AppShell showSidebar={true}>
+        {children}
+      </AppShell>
+    </div>
   )
 }

@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { RadioGroup } from "@/components/ui/radio-group";
-import { Select } from "@/components/ui/select";
+import { FormSelect } from "@/components/ui/form-select";
 import { FileUpload } from "@/components/ui/file-upload";
 import { CheckboxGroup } from "@/components/ui/checkbox-group";
 
@@ -19,8 +19,8 @@ const makerSchema = z.object({
   makerStory: z.string().min(1, "Maker Story is required"),
   makerProfile: z.string().min(1, "Maker Profile is required"),
   makerCardNumber: z.string().optional(),
-  gender: z.enum(["he", "she", "they", "none"], {
-    required_error: "Gender is required"
+  gender: z.enum(["he", "she", "they", "none"]).refine(val => val !== undefined, {
+    message: "Gender is required"
   }),
   yearsExperience: z.string().min(1, "Years of Experience is required"),
   contactNumber: z.string().min(1, "Contact Number is required"),
@@ -75,7 +75,7 @@ const makerSchema = z.object({
   peersReviews: z.string().optional(),
 
   // Subscription
-  subscribeToUpdates: z.boolean().default(true)
+  subscribeToUpdates: z.boolean()
 });
 
 type MakerFormData = z.infer<typeof makerSchema>;
@@ -160,7 +160,7 @@ export default function MakerRegistrationForm({ onBack }: { onBack?: () => void 
     resolver: zodResolver(makerSchema),
   });
 
-  const onSubmit = (data: MakerFormData) => {
+  const onSubmit = (data: any) => {
     // handle form submission
     console.log("Maker registration data:", data);
     alert("Maker registration submitted successfully!");
@@ -172,7 +172,7 @@ export default function MakerRegistrationForm({ onBack }: { onBack?: () => void 
       <div className="space-y-6">
         <h3 className="text-xl font-semibold text-amber-600">Basic Information</h3>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className="space-y-2">
             <Label htmlFor="brandName">Brand/Logo Name *</Label>
             <Input id="brandName" placeholder="Your brand name" {...register("brandName")} />
@@ -197,8 +197,8 @@ export default function MakerRegistrationForm({ onBack }: { onBack?: () => void 
           {errors.makerStory && <span className="text-sm text-red-500">{errors.makerStory.message}</span>}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Select
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <FormSelect
             name="makerProfile"
             label="Maker Profile"
             options={makerProfileOptions}
@@ -224,7 +224,7 @@ export default function MakerRegistrationForm({ onBack }: { onBack?: () => void 
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Select
+          <FormSelect
             name="yearsExperience"
             label="Years of Experience"
             options={experienceOptions}
@@ -357,7 +357,7 @@ export default function MakerRegistrationForm({ onBack }: { onBack?: () => void 
       <div className="space-y-6">
         <h3 className="text-xl font-semibold text-amber-600">Scale & Capacity</h3>
         
-        <Select
+        <FormSelect
           name="activeMakers"
           label="Total Number of Active Makers"
           options={activeMakersOptions}
@@ -424,7 +424,7 @@ export default function MakerRegistrationForm({ onBack }: { onBack?: () => void 
           {errors.productsRange && <span className="text-sm text-red-500">{errors.productsRange.message}</span>}
         </div>
 
-        <Select
+        <FormSelect
           name="productionCapacity"
           label="Production Capacity per Month"
           options={productionCapacityOptions}
@@ -465,7 +465,7 @@ export default function MakerRegistrationForm({ onBack }: { onBack?: () => void 
           <Input id="websiteLink" placeholder="https://your-website.com (Optional)" {...register("websiteLink")} />
         </div>
 
-        <Select
+        <FormSelect
           name="offlinePresence"
           label="Artisan's Offline Presence"
           options={offlinePresenceOptions}
@@ -490,7 +490,7 @@ export default function MakerRegistrationForm({ onBack }: { onBack?: () => void 
           />
         </div>
 
-        <Select
+        <FormSelect
           name="conductWorkshops"
           label="Do you conduct workshops?"
           options={workshopOptions}
@@ -500,7 +500,7 @@ export default function MakerRegistrationForm({ onBack }: { onBack?: () => void 
           required
         />
 
-        <Select
+        <FormSelect
           name="collaborationDesigners"
           label="Collaboration with Designers"
           options={collaborationOptions}
@@ -510,7 +510,7 @@ export default function MakerRegistrationForm({ onBack }: { onBack?: () => void 
           required
         />
 
-        <Select
+        <FormSelect
           name="insurance"
           label="Insurance"
           options={insuranceOptions}
@@ -520,7 +520,7 @@ export default function MakerRegistrationForm({ onBack }: { onBack?: () => void 
           required
         />
 
-        <Select
+        <FormSelect
           name="certifications"
           label="Certifications/Awards"
           options={certificationOptions}

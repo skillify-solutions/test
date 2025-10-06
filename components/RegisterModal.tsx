@@ -48,7 +48,7 @@ export default function RegisterModal({ children }: { children: React.ReactNode 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="w-full max-w-[95vw] sm:max-w-md md:max-w-lg lg:max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="w-full max-w-[95vw] sm:max-w-2xl md:max-w-4xl lg:max-w-6xl xl:max-w-7xl max-h-[90vh] overflow-y-auto">
         <DialogTitle className="sr-only">Join Artisan</DialogTitle>
         <DialogDescription className="sr-only">Select your role to get started with Artisan</DialogDescription>
         <div className="flex flex-col h-full px-4 py-6 sm:px-6 md:px-8">

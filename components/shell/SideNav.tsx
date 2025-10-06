@@ -100,13 +100,18 @@ export function SideNav() {
   const items = isAdmin ? adminItems : dashboardItems
   
   return (
-    <aside className="w-64 border-r bg-background">
-      <div className="p-4">
-        <h2 className="text-lg font-semibold mb-4">
-          {isAdmin ? 'Admin Dashboard' : 'Dashboard'}
-        </h2>
-        <nav className="space-y-1">
-          {items.map((item) => {
+    <aside className="w-64 border-r border-amber-200/20 bg-gradient-to-b from-white to-amber-50/30">
+      <div className="p-6">
+        <div className="mb-8">
+          <h2 className="text-xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
+            {isAdmin ? 'Admin Dashboard' : 'Dashboard'}
+          </h2>
+          <p className="text-sm text-gray-500 mt-1">
+            {isAdmin ? 'Manage your platform' : 'Manage your profile'}
+          </p>
+        </div>
+        <nav className="space-y-2">
+          {items.map((item, index) => {
             const Icon = item.icon
             const active = pathname === item.href
             return (
@@ -114,14 +119,21 @@ export function SideNav() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors",
+                  "flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group",
                   active
-                    ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                    ? "bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-lg shadow-amber-200"
+                    : "text-gray-600 hover:text-amber-700 hover:bg-amber-50 hover:shadow-sm hover:scale-[1.02]"
                 )}
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <Icon className="h-4 w-4" />
-                {item.title}
+                <Icon className={cn(
+                  "h-5 w-5 transition-all duration-200",
+                  active ? "text-white" : "text-gray-500 group-hover:text-amber-600"
+                )} />
+                <span className="transition-all duration-200">{item.title}</span>
+                {active && (
+                  <div className="ml-auto w-2 h-2 bg-white rounded-full animate-pulse" />
+                )}
               </Link>
             )
           })}

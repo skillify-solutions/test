@@ -5,6 +5,7 @@ import "@/styles/theme.css";
 import { ThemeProvider } from "next-themes";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { ConditionalHeader } from "@/components/conditional-header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,9 +30,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-background flex flex-col`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-gradient-to-br from-gray-50 to-amber-50 flex flex-col`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-          <SiteHeader />
+          <ConditionalHeader />
           <main className="flex-1">{children}</main>
           <SiteFooter />
         </ThemeProvider>
